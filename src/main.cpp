@@ -5,6 +5,8 @@ using namespace geode::prelude;
 static float lastPercent  = 0;
 static float levelPercent = 0;
 
+static bool isEnabled = false;
+
 static void playJingle() {
 	auto system = FMODAudioEngine::get()->m_system;
 	FMOD::Channel* channel;
@@ -25,10 +27,10 @@ class $modify(MyPlayLayer, PlayLayer) {
 	void postUpdate(float dt) {
 		PlayLayer::postUpdate(dt);
 
-		if (!Mod::get()->getSettingValue<bool>("enabled"))
+		if (!isEnabled)
 			return;
 
-		if (levelPercent == 0.0f || m_isPlatformer)
+		if (levelPercent == 0.0f || levelPercent == 100.0f || m_isPlatformer)
 			return;
 
 		float currentPercent = getCurrentPercent();
@@ -42,7 +44,9 @@ class $modify(MyPlayLayer, PlayLayer) {
 	void resetLevel() {
 		PlayLayer::resetLevel();
 
-		if (!Mod::get()->getSettingValue<bool>("enabled"))
+		isEnabled = Mod::get()->getSettingValue<bool>("enabled");
+
+		if (!isEnabled)
 			return;
 
 		levelPercent = m_level->getNormalPercent();
