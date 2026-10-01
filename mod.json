@@ -11,7 +11,7 @@
 	},
 	"id": "iliashdz.newbestjingle",
 	"name": "New Best Jingle",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "IliasHDZ",
 	"description": "Plays a sound effect once you pass a new best",
 	"dependencies": {
