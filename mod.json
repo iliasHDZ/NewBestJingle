@@ -1,0 +1,65 @@
+{
+	"geode": "5.10.1",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
+	},
+	"resources": {
+		"files": ["resources/*.mp3"]
+	},
+	"id": "iliashdz.newbestjingle",
+	"name": "New Best Jingle",
+	"version": "v1.0.0",
+	"developer": "IliasHDZ",
+	"description": "Plays a sound effect once you pass a new best",
+	"dependencies": {
+		"geode.node-ids": ">=v1.23.3"
+	},
+	"settings": {
+		"enabled": {
+			"name": "Enabled",
+			"description": "Toggles the mod.",
+			"type": "bool",
+			"default": true
+		},
+		"volume": {
+			"name": "Volume (%)",
+			"description": "Set the volume of the sound effect.",
+			"type": "int",
+			"default": 25,
+			"min": 0,
+			"max": 100,
+			"control": {
+				"input": true,
+				"slider": true,
+				"arrows": true,
+				"big-arrows": true,
+				"arrow-step": 1,
+				"big-arrow-step": 5,
+				"slider-step": 1
+			}
+		},
+		"customSound": {
+			"name": "Custom Sound",
+			"description": "This setting allows you to choose a custom sound instead of the delta rune wierd route jingle",
+			"type": "file",
+			"default": "No custom sound",
+			"control": {
+				"filters": [
+					{
+						"description": "Audio files",
+						"files": [
+							"*.mp3",
+							"*.wav",
+							"*.flac",
+							"*.oga",
+							"*.ogg"
+						]
+					}
+				]
+			}
+		}
+	}
+}
