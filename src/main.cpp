@@ -35,7 +35,7 @@ class $modify(MyPlayLayer, PlayLayer) {
 
 		float currentPercent = getCurrentPercent();
 
-		if (lastPercent < levelPercent && currentPercent >= levelPercent)
+		if (!m_isTestMode && !m_isPracticeMode && lastPercent < levelPercent && currentPercent >= levelPercent)
 			playJingle();
 
 		lastPercent = currentPercent;
