@@ -12,12 +12,12 @@ static void playJingle() {
 	FMOD::Channel* channel;
 	FMOD::Sound* sound;
 
-	auto soundPath = Mod::get()->getSettingValue<std::filesystem::path>("customSound");
+	auto soundPath = Mod::get()->getSettingValue<asp::fs::Path>("customSound");
 
-	if (soundPath.string() == "No custom sound")
+	if (soundPath == "No custom sound")
 		soundPath = Mod::get()->getResourcesDir() / "weird-route-jingle.mp3";
 
-	system->createSound(soundPath.string().c_str(), FMOD_DEFAULT, nullptr, &sound);
+	system->createSound(soundPath.c_str(), FMOD_DEFAULT, nullptr, &sound);
 	system->playSound(sound, nullptr, false, &channel);
 	channel->setVolume((float)Mod::get()->getSettingValue<int>("volume") / 100.0f);
 }
